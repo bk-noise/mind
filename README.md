@@ -236,7 +236,7 @@ Anchor → Decide → Reflect → Next
 | `build.sh` | Build script / 编译脚本 |
 | `black_hole_analysis.py` | Black hole data analysis / 黑洞数据分析 |
 | `cosmology_integration.py` | Cosmology observation integration / 宇宙观测整合 |
-| `docs/SIMULATION_REALITY_DUALITY.md` | Algebraic structure / 代数结构 (v1.19) |
+| `docs/SIMULATION_REALITY_DUALITY.md` | Algebraic structure / 代数结构 (v1.20) |
 | `docs/THEORY_FRAMEWORK.md` | Theory framework / 理论框架 |
 
 ---
@@ -293,6 +293,7 @@ Anchor → Decide → Reflect → Next
 - [x] 时空非均匀性与复杂系统频谱 / Spacetime inhomogeneity and complex system spectrum (v1.16)
 - [x] 层级距离指数缩放 / Level distance exponential scaling (v1.17)
 - [x] 万物有灵·族群宇宙 / Pan-psychism · Swarm Universe (v1.19)
+- [x] 计算族群·程序宇宙 / Computing Swarm · Program Universe (v1.20)
 - [ ] 多智能体交互理论 / Multi-agent theory
 - [ ] 可检验预测验证 / Testable predictions
 
@@ -323,6 +324,6 @@ Anchor → Decide → Reflect → Next
 ---
 
 *最后更新 / Last Updated: 2026-04-02*
-*版本 / Version: v1.19*
+*版本 / Version: v1.20*
 *理论来源 / Theory: 分形嵌套宇宙理论 / Fractal Nested Universe Theory*
 *仓库 / Repository: https://github.com/bk-noise/mind*
