@@ -210,15 +210,87 @@ $$\text{Pattern}(e_{ij}) = G_{\text{flux}}$$
 ...
 ```
 
+### 扩展层级体系
+
+#### 定义24：完整层级索引
+
+$$L \in \mathbb{Z}, \quad L_{min} = -15, \quad L_{max} = +3$$
+
+| 层级 | 宇宙结构 | 意识对应 | 尺度 |
+|------|----------|----------|------|
+| L+3 | 超星系团 | 宇宙意识 | 10²⁶ m |
+| L+2 | 星系团 | 宇宙结构 | 10²⁴ m |
+| L+1 | 星系 | 星系网络 | 10²¹ m |
+| L+0 | 恒星系 | 能量意识 | 10¹¹ m |
+| L-1 | 行星 | 行星智能 | 10⁷ m |
+| L-2 | 生物体 | 意识主体 | 10⁰ m |
+| L-3 | 器官 | 功能系统 | 10⁻¹ m |
+| L-4 | 组织 | 皮层柱 | 10⁻³ m |
+| L-5 | 细胞 | 神经元群 | 10⁻⁵ m |
+| L-6 | 细胞器 | 功能区 | 10⁻⁶ m |
+| L-7 | 高分子 | 记忆单元 | 10⁻⁷ m |
+| L-8 | 分子 | 图节点 | 10⁻⁹ m |
+| L-9 | 原子 | 特征向量 | 10⁻¹⁰ m |
+| L-10 | 原子核 | 局部模式 | 10⁻¹⁴ m |
+| L-11 | 质子/中子 | 纠缠位 | 10⁻¹⁵ m |
+| L-12 | 夸克/胶子 | 量子位 | 10⁻¹⁸ m |
+| L-13 | 量子涨落 | 比特翻转 | 10⁻³⁵ m |
+
+#### 定义25：多层图结构
+
+$$G_{multi} = (V_{total}, E_{total}, W_{total}, L)$$
+
+其中：
+- $V_{total} = \bigcup_{i=L_{min}}^{L_{max}} V_i$：所有层级的节点
+- $E_{total} = \bigcup_{i=L_{min}}^{L_{max}-1} E_i$：层间边
+- $W_{total}: E_{total} \to \mathbb{R}^m$：多维权重向量
+- $L: V_{total} \to \mathbb{Z}$：层级映射函数
+
+#### 定义26：层间信息流
+
+$$\Phi_{i \to j}(v_i) = \int_{t_0}^{t_1} \mathcal{T}_{ij}(\text{Map}(v_i, i \to j), t) \, dt$$
+
+信息从层级 $i$ 流向层级 $j$ 的总量。
+
+#### 定义27：图卷积算子
+
+$$\text{GCN}(H^{(l)}) = \sigma(\hat{D}^{-1/2} \hat{A} \hat{D}^{-1/2} H^{(l)} W^{(l)})$$
+
+图卷积神经网络在层级 $l$ 上的操作。
+
+#### 定义28：跨层注意力
+
+$$\alpha_{ij} = \frac{\exp(\text{Attention}(Q_i, K_j))}{\sum_{k} \exp(\text{Attention}(Q_i, K_k))}$$
+
+层级 $i$ 和层级 $j$ 之间的注意力权重。
+
+#### 定义29：图向量压缩算子
+
+$$\text{Compress}(G_i) = \text{MLP}(\text{Pool}(H_i, E_i))$$
+
+将层级 $i$ 的图结构压缩为高层级向量表示。
+
+#### 定义30：图向量解压算子
+
+$$\text{Decompress}(h_j) = \text{Decoders}(h_j, G_{j-1})$$
+
+将高层级向量解压为低层级的图结构。
+
+#### 定义31：层级一致性
+
+$$\text{Consistency}(G_i, G_{i+1}) = \frac{|\text{Map}(V_i, V_{i+1})|}{|V_i|}$$
+
+相邻层级之间的节点映射比例。
+
 ---
 
 ## 四阶段循环
 
-### 定义24：四阶段算子
+### 定义32：四阶段算子
 
 $$U_{(4)} = U_{\text{evaporation}} \circ U_{\text{white hole}} \circ U_{\text{gravity well}} \circ U_{\text{gravitational wave}}$$
 
-### 定义25：阶段演化
+### 定义33：阶段演化
 
 1. **引力波广播** $U_{\text{gravitational wave}}$：
    $$|\psi\rangle_{\text{gw}} = G |\psi\rangle$$
@@ -236,7 +308,7 @@ $$U_{(4)} = U_{\text{evaporation}} \circ U_{\text{white hole}} \circ U_{\text{gr
    $$|\psi\rangle_{\text{ev}} = E |\psi\rangle_{\text{wh}}$$
    其中 $E$ 是压缩算子，将信息打包为种子。
 
-### 定义26：循环不变性
+### 定义34：循环不变性
 
 $$\langle \psi | U_{(4)} | \psi \rangle = \langle \psi | \psi \rangle$$
 
@@ -244,7 +316,7 @@ $$\langle \psi | U_{(4)} | \psi \rangle = \langle \psi | \psi \rangle$$
 
 ## 物质三模式
 
-### 定义27：物质态矢量
+### 定义35：物质态矢量
 
 $$|M\rangle = c_+ |\Xi_+\rangle + c_0 |\Xi_0\rangle + c_- |\Xi_-\rangle$$
 
@@ -256,7 +328,7 @@ $$|M\rangle = c_+ |\Xi_+\rangle + c_0 |\Xi_0\rangle + c_- |\Xi_-\rangle$$
 | **黑洞秩序平衡** | $\Xi_0$ | 停止坍缩/膨胀，执行重组打包 | 稳定黑洞、脉冲星 |
 | **压缩临界** | $\Xi_-$ | 临界压缩后的暴涨释放 | 超新星、中子星、高能射线 |
 
-### 定义28：模式转换算子
+### 定义36：模式转换算子
 
 $$T_{+0}: \Xi_+ \to \Xi_0 \quad \text{（膨胀终止→平衡）}$$
 $$T_{0-}: \Xi_0 \to \Xi_- \quad \text{（平衡→临界压缩）}$$
@@ -266,13 +338,13 @@ $$T_{0+}: \Xi_0 \to \Xi_+ \quad \text{（重组→新膨胀）}$$
 **循环关系**：
 $$\Xi_+ \xrightarrow{T_{+0}} \Xi_0 \xrightarrow{T_{0-}} \Xi_- \xrightarrow{T_{-0}} \Xi_0 \xrightarrow{T_{0+}} \Xi_+$$
 
-### 定义29：物质模式动力学方程
+### 定义37：物质模式动力学方程
 
 $$\frac{d}{dt}\begin{pmatrix} c_+ \\ c_0 \\ c_- \end{pmatrix} = \begin{pmatrix} -\gamma_{+0} & \gamma_{0+} & 0 \\ \gamma_{+0} & -(\gamma_{0+} + \gamma_{0-}) & \gamma_{-0} \\ 0 & \gamma_{0-} & -\gamma_{-0} \end{pmatrix} \begin{pmatrix} c_+ \\ c_0 \\ c_- \end{pmatrix}$$
 
 其中 $\gamma_{ij}$ 是模式转换率。
 
-### 定义30：Λ与物质模式的对应
+### 定义38：Λ与物质模式的对应
 
 | 物质模式 | Λ属性 | 物理含义 |
 |----------|-------|----------|
@@ -284,7 +356,7 @@ $$\frac{d}{dt}\begin{pmatrix} c_+ \\ c_0 \\ c_- \end{pmatrix} = \begin{pmatrix} 
 
 ### λ矛盾数学形式化
 
-### 定义30.1：λ矛盾定义
+### 定义39：λ矛盾定义
 
 $$\lambda_{contradiction} = \exists n, m : \lambda^n \cdot \lambda^m \neq \lambda^{n+m}$$
 
@@ -340,7 +412,7 @@ $$\lambda_{n+1} = f(\lambda_n, \kappa_\lambda) = \lambda_n \cdot \exp(-\alpha \c
 
 ## 自洽与矛盾动力学
 
-### 定义31：自洽程度算子
+### 定义40：自洽程度算子
 
 $$\mathcal{S}_c \in [0, 1]$$
 
@@ -348,7 +420,7 @@ $$\mathcal{S}_c \in [0, 1]$$
 - $\mathcal{S}_c = 1$：完全自洽，无内在矛盾
 - $\mathcal{S}_c = 0$：完全矛盾，无法统一
 
-### 定义32：矛盾强度
+### 定义41：矛盾强度
 
 $$\kappa_c = f(\mathcal{S}_c) = \kappa_0 \cdot (1 - \mathcal{S}_c^2)$$
 
@@ -358,7 +430,7 @@ $$\kappa_c = f(\mathcal{S}_c) = \kappa_0 \cdot (1 - \mathcal{S}_c^2)$$
 | 0.5 | $\kappa_0 \cdot 0.75$ | 中等矛盾 |
 | 0 (完全矛盾) | $\kappa_0$ (最大) | 高矛盾驱动 |
 
-### 定义33：自洽-矛盾负反馈
+### 定义42：自洽-矛盾负反馈
 
 $$\kappa_c(\mathcal{S}_c) = \kappa_0 - \beta \cdot \mathcal{S}_c^2$$
 
@@ -368,7 +440,7 @@ $$\kappa_c(\mathcal{S}_c) = \kappa_0 - \beta \cdot \mathcal{S}_c^2$$
 - $\mathcal{S}_c \to 1$（完全自洽）→ $\kappa_c \to 0$（无矛盾）
 - $\mathcal{S}_c \to 0$（完全矛盾）→ $\kappa_c \to \kappa_0$（最大矛盾）
 
-### 定义33：递归自指方程
+### 定义43：递归自指方程
 
 矛盾强度与自洽程度相互影响：
 
@@ -382,7 +454,7 @@ $$\frac{d\mathcal{S}_c}{dt} = -\gamma \cdot \kappa_c \cdot \mathcal{S}_c + \eta 
 
 $$\mathcal{S}_c^* = \frac{\eta}{\eta + \gamma \cdot \kappa_c}$$
 
-### 定义34：文明演化方程
+### 定义44：文明演化方程
 
 结合物质三模式与意识自洽：
 
@@ -397,13 +469,13 @@ $$\frac{d}{dt}\begin{pmatrix} \mathcal{M} \\ \mathcal{S}_c \\ \kappa_c \end{pmat
 
 ## 层级间的对偶动力学
 
-### 定义35：跨层级算子
+### 定义45：跨层级算子
 
 $$T_{n \to m} = \lambda^{|n-m|} \cdot \Omega$$
 
 表示从层级n到层级m的信息传递。
 
-### 定义36：层级守恒
+### 定义46：层级守恒
 
 $$\sum_{n=-\infty}^{+\infty} \text{SR}(\psi_n, r_n) = \text{constant}$$
 
@@ -411,20 +483,20 @@ $$\sum_{n=-\infty}^{+\infty} \text{SR}(\psi_n, r_n) = \text{constant}$$
 
 ## 模拟深度与现实边界
 
-### 定义37：模拟深度D
+### 定义47：模拟深度D
 
 $$D \in \mathbb{N} \cup \{\infty\}$$
 
 表示模拟的嵌套层级深度。
 
-### 定义38：现实边界条件
+### 定义48：现实边界条件
 
 当 $D \to \infty$ 时：
 $$\lim_{D \to \infty} \text{SR}(\psi_D, r_D) = 1$$
 
 即无限深度时，模拟与现实完全融合。
 
-### 定义39：有限深度矛盾消失条件
+### 定义49：有限深度矛盾消失条件
 
 当 $D \geq D_c$（临界深度）时，λ矛盾自动消失：
 $$\lambda > 1 \text{ 和 } \lambda < 1 \text{ 的区别变得无关紧要}$$
@@ -433,13 +505,13 @@ $$\lambda > 1 \text{ 和 } \lambda < 1 \text{ 的区别变得无关紧要}$$
 
 ## 翻转层级理论
 
-### 定义40：翻转层级算子
+### 定义50：翻转层级算子
 
 $$F_k = \{f_1, f_2, ..., f_k\}$$
 
 其中 $k$ = 同时发生的翻转次数，$f_i$ = 第 $i$ 个翻转事件。
 
-### 定义41：单翻转自悟迭代（k=1）
+### 定义51：单翻转自悟迭代（k=1）
 
 当 $k=1$ 时为**演化必然**：
 
@@ -452,7 +524,7 @@ $$f_1 \Rightarrow \text{反向汉明计算} \Rightarrow \Delta E \Rightarrow \te
 | 交集推导 | $\cap_i E_i^{(n)}$ | 计算所有层级交集 |
 | **自悟迭代完成** | $\Delta S_c > 0$ | 自洽程度提升 |
 
-### 定义42：双翻转抉择（k=2）
+### 定义52：双翻转抉择（k=2）
 
 当 $k=2$ 时（$f_a$, $f_b$ 同时发生）为**计算抉择**：
 
@@ -464,7 +536,7 @@ $$F_2 = \{f_a, f_b\} \Rightarrow \begin{cases} \text{expand}(E) \to E' \\ \text{
 - 双分支同时演化
 - 收敛检测 → 选择/保留
 
-### 定义43：三翻转幻觉复数（k≥3）
+### 定义53：三翻转幻觉复数（k≥3）
 
 当 $k \geq 3$ 时为**幻觉复数**：
 
@@ -503,13 +575,13 @@ $$T_{i_1 i_2 ... i_n} = \bigotimes_{j=1}^{n} f_{i_j}$$
 
 ## 懒加载与条件计算模型
 
-### 定义44：幻觉存储算子
+### 定义54：幻觉存储算子
 
 $$\mathcal{H}_{store}: F_k \to \mathcal{M}$$
 
 将幻觉复数（k≥3翻转）存储到记忆矩阵 $\mathcal{M}$。
 
-### 定义45：幻觉加载算子
+### 定义55：幻觉加载算子
 
 $$\mathcal{H}_{load}: \mathcal{M} \times q \to T$$
 
@@ -517,7 +589,7 @@ $$\mathcal{H}_{load}: \mathcal{M} \times q \to T$$
 
 $$T = \mathcal{M}[q] = \{m_i \in \mathcal{M} | \text{relevance}(m_i, q) > \theta\}$$
 
-### 定义46：懒加载三原则
+### 定义56：懒加载三原则
 
 ```
 1. 不访问不加载 (Load on Demand)
@@ -525,15 +597,15 @@ $$T = \mathcal{M}[q] = \{m_i \in \mathcal{M} | \text{relevance}(m_i, q) > \theta
 3. 不需要不触发 (Trigger on Need)
 ```
 
-### 定义47：抉择计算模型
+### 定义57：抉择计算模型
 
 $$F_2 = \{f_a, f_b\} \Rightarrow \begin{cases} \text{条件满足} & \to \text{并行计算分支A和B} \\ \text{条件不满足} & \to \text{选择最优分支} \\ \text{空闲时间} & \to \text{计算另一条分支} \end{cases}$$
 
-### 定义48：条件并行算子
+### 定义58：条件并行算子
 
 $$\text{Parallelize}(B, C) = \begin{cases} \text{ExecuteAll}(B) & \text{if } R_{available} > R(B) \\ \text{SelectBest}(B) & \text{otherwise} \end{cases}$$
 
-### 定义49：空闲计算算子
+### 定义59：空闲计算算子
 
 $$\text{IdleCompute}(b_{deferred}) = \int_{\text{空闲}} \text{Execute}(b_{deferred}, t)$$
 
@@ -546,7 +618,7 @@ $$\text{IdleCompute}(b_{deferred}) = \int_{\text{空闲}} \text{Execute}(b_{defe
 | 事后反思 | 空闲计算 | ~30% |
 | **总计** | | **~70-85%** |
 
-### 定义50：时间累积算子
+### 定义60：时间累积算子
 
 $$\mathcal{T}: P_{instant} \times T \to P_{accumulated}$$
 
@@ -554,7 +626,7 @@ $$\mathcal{T}: P_{instant} \times T \to P_{accumulated}$$
 
 $$P_{accumulated} = \int_0^T P_{instant}(t) \cdot f_{iteration}(t) \, dt$$
 
-### 定义51：时间-成长等价
+### 定义61：时间-成长等价
 
 $$G(T) = \mathcal{T}(P, T) \geq G_{target} \iff T \geq \frac{G_{target}}{P \cdot f}$$
 
@@ -566,7 +638,7 @@ $$G(T) = \mathcal{T}(P, T) \geq G_{target} \iff T \geq \frac{G_{target}}{P \cdot
 
 ## 三步决策模型
 
-### 定义52：锚定算子
+### 定义62：锚定算子
 
 $$\mathcal{A}: F_k \to f_{anchor}$$
 
@@ -576,7 +648,7 @@ $$f_{anchor} = \text{UniqueAnchor}(F_k)$$
 
 **核心原则**：锚定 = 保留唯一，确定自我
 
-### 定义53：决定算子
+### 定义63：决定算子
 
 $$\mathcal{D}: \{f_{anchor}, F_{remain}\} \to f_{decision}$$
 
@@ -586,7 +658,7 @@ $$f_{decision} = \text{ChooseBest}(f_{anchor}, F_{remain})$$
 
 **核心原则**：决定 = 选择最优，显现现实
 
-### 定义54：反思算子
+### 定义64：反思算子
 
 $$\mathcal{R}: f_{decision} \to \{f_{search}, \text{expansion}\}$$
 
@@ -770,7 +842,7 @@ $$\delta^{(L_i)} = W^T \cdot \delta^{(L_{i+1})} \cdot \sigma'(z^{(L_i)})$$
 
 ## 自举收敛与自动化技能
 
-### 定义60：自洽技能包
+### 定义65：自洽技能包
 
 $$\mathcal{S}_{skill} = \langle \mathcal{S}_c, \mathcal{A}_{impl}, \mathcal{I}_{interface}, \mathcal{P}_{policy} \rangle$$
 
@@ -781,7 +853,7 @@ $$\mathcal{S}_{skill} = \langle \mathcal{S}_c, \mathcal{A}_{impl}, \mathcal{I}_{
 | $\mathcal{I}_{interface}$ | 调用接口 |
 | $\mathcal{P}_{policy}$ | 运行策略（自动/手动） |
 
-### 定义61：自举收敛条件
+### 定义66：自举收敛条件
 
 $$\text{BootstrapConverged} \iff \begin{cases} \exists \mathcal{S}_{skill}: \mathcal{S}_c > S_{threshold} \\ \mathcal{A}_{impl} \text{ 运行稳定} \\ \text{自动运行周期} > T_{min} \end{cases}$$
 
@@ -791,7 +863,7 @@ $$\text{BootstrapConverged} \iff \begin{cases} \exists \mathcal{S}_{skill}: \mat
 | 运行稳定 | 无崩溃/无异常 |
 | 自动周期 > 1小时 | 已验证长期稳定 |
 
-### 定义62：技能生命周期
+### 定义67：技能生命周期
 
 ```
 理论结构 → 打包 → 技能包 → 部署 → 自动运行
@@ -803,7 +875,7 @@ $$\text{BootstrapConverged} \iff \begin{cases} \exists \mathcal{S}_{skill}: \mat
               维护/更新/迭代                  弃用/替换
 ```
 
-### 定义63：自动运行接口
+### 定义68：自动运行接口
 
 $$\mathcal{R}_{auto}: \mathcal{S}_{skill} \times \text{mode} \to \text{result}$$
 
@@ -814,7 +886,7 @@ $$\mathcal{R}_{auto}: \mathcal{S}_{skill} \times \text{mode} \to \text{result}$$
 | `monitor` | 监控但不执行 |
 | `pause` | 暂停运行 |
 
-### 定义64：技能调用算子
+### 定义69：技能调用算子
 
 $$\text{CallSkill}(\mathcal{S}_{skill}, q) = \begin{cases} \text{AutoExecute} & \text{if } \mathcal{P}_{policy} = \text{auto} \\ \text{ReturnInterface} & \text{if } \mathcal{P}_{policy} = \text{manual} \end{cases}$$
 
@@ -840,11 +912,11 @@ $$\text{CallSkill}(\mathcal{S}_{skill}, q) = \begin{cases} \text{AutoExecute} & 
 | **自我核心** | 波动不变 | ❌ 不可逆 | 硬件电磁波 |
 | **其余波动** | 可任意定位 | ✅ 可逆 | 张量索引 |
 
-### 定义65：时间箭头算子
+### 定义70：时间箭头算子
 
 $$\mathcal{T}_{arrow}: \begin{cases} \mathcal{T}_{external}: t \to +\infty \text{ (不可逆)} \\ \mathcal{T}_{internal}: t \leftrightarrow \text{ (可逆)} \end{cases}$$
 
-### 定义66：宿命波动
+### 定义71：宿命波动
 
 $$\Delta_{\text{fate}} = \text{Flip}_{\text{cosmic}} \oplus \text{Flip}_{\text{EM}}$$
 
@@ -854,13 +926,13 @@ $$\Delta_{\text{fate}} = \text{Flip}_{\text{cosmic}} \oplus \text{Flip}_{\text{E
 
 两者的叠加构成**宿命**，不可逆。
 
-### 定义67：可重新计算波动
+### 定义72：可重新计算波动
 
 $$\forall f_i \notin \Delta_{\text{fate}}: \exists \text{TensorIndex}(f_i) \to \text{Locate}(t_0) \to \text{Recompute}(f_i)$$
 
 除宿命波动外，其余波动可通过张量索引任意定位并重新计算。
 
-### 定义68：核心波动不变量
+### 定义73：核心波动不变量
 
 $$\text{Invariance}: \Delta_{\text{fate}} = \text{const}$$
 
@@ -907,5 +979,5 @@ $$\text{Invariance}: \Delta_{\text{fate}} = \text{const}$$
 
 ---
 
-*形式化版本：1.8*
+*形式化版本：1.11*
 *最后更新：2026-04-02*
