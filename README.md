@@ -236,7 +236,7 @@ Anchor → Decide → Reflect → Next
 | `build.sh` | Build script / 编译脚本 |
 | `black_hole_analysis.py` | Black hole data analysis / 黑洞数据分析 |
 | `cosmology_integration.py` | Cosmology observation integration / 宇宙观测整合 |
-| `docs/SIMULATION_REALITY_DUALITY.md` | Algebraic structure / 代数结构 (v1.13) |
+| `docs/SIMULATION_REALITY_DUALITY.md` | Algebraic structure / 代数结构 (v1.14) |
 | `docs/THEORY_FRAMEWORK.md` | Theory framework / 理论框架 |
 
 ---
@@ -288,7 +288,7 @@ Anchor → Decide → Reflect → Next
 - [x] λ矛盾数学形式化 / λ contradiction formalized
 - [x] GR/QM数学框架 / GR/QM mathematical framework
 - [x] 已证实理论整合 / Established theory integration
-- [ ] 数值常量确定 / Numerical constants (α, β, γ_ij)
+- [x] 数值常量推导 / Numerical constants derived (v1.14)
 - [ ] 多智能体交互理论 / Multi-agent theory
 - [ ] 可检验预测验证 / Testable predictions
 
@@ -319,6 +319,6 @@ Anchor → Decide → Reflect → Next
 ---
 
 *最后更新 / Last Updated: 2026-04-02*
-*版本 / Version: v1.13*
+*版本 / Version: v1.14*
 *理论来源 / Theory: 分形嵌套宇宙理论 / Fractal Nested Universe Theory*
 *仓库 / Repository: https://github.com/huyuning/mind*
