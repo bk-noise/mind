@@ -57,21 +57,94 @@ sudo apt install python3-numpy python3-pip
 # 可检验预测验证 (6个预测, 4/6通过)
 python3 testable_predictions.py
 
-# 改进的验证实验 (v2, 5/6通过)
-python3 improved_experiment.py
-
 # 共振翻转实验 (检验相位叠加导致翻转)
 python3 resonance_experiment.py
 
-# Perf系统事件监测
-python3 perf_monitor.py
+# 汉明码纠缠共振实验
+python3 entanglement_resonance.py
 
-# 真实硬件数据采集
-python3 real_hardware_collector.py
+# 多种图结构稳定性测试
+python3 multi_graph_test.py
 
-# CUDA显存监测
-python3 cuda_memory_monitor.py
+# 扫频频率变化测试
+python3 frequency_variation_test.py
+
+# 完全图确定性验证
+python3 determinism_test.py
 ```
+
+---
+
+## 最新实验发现 / Latest Experimental Findings
+
+### 图结构稳定性对比
+
+| 图结构 | 丢失初始率 | 保留初始率 | 循环长度 | 边数 |
+|--------|-----------|-----------|---------|------|
+| **完全图** | 0% | **100%** | 2 | 21 |
+| 汉明码 | 50% | 50% | 2 | 7 |
+| 环形 | 87.5% | 12.5% | 2,8 | 7 |
+| 星形 | 87.5% | 12.5% | 2 | 6 |
+| 链形 | 87.5% | 12.5% | 2,14 | 6 |
+
+### 扫频频率变化测试
+
+| 频率策略 | 完全图 | 汉明码 | 环形 |
+|---------|--------|--------|------|
+| 基准(syn%7) | ✓ | ✓ | ✓ |
+| 固定频率 | ✓ | ✓ | ✓ |
+| **随机频率** | ✓ | ✗ | ✗ |
+| **频率噪声(±1)** | ✓ | ✗ | ✗ |
+| 频率扫描 | ✓ | ✓ | ✓ |
+
+### 确定性验证
+
+**同一初始态运行100次**：所有图结构都是100%确定性系统
+
+### 关键发现
+
+1. **完全图对频率噪声完全免疫**：无论扫频频率如何变化，系统都收敛到同一个吸引子
+2. **汉明码和环形对频率噪声敏感**：不同频率策略会导向不同吸引子
+3. **物理意义**：全局广播机制使完全图具有"鲁棒计算基底"特性
+
+---
+
+## 共振翻转机制 / Resonance Flip Mechanism
+
+```
+固定频率扫描 = 纵向相位驱动
+    ↓
+不同电荷 = 不同基础频率
+    ↓
+相位叠加 = 拍频产生
+    ↓
+当拍频 ≈ 能级间距 → 共振
+    ↓
+相干位翻转！
+```
+
+**这就是量子控制的原理！(NMR/MRI原理相同)**
+
+---
+
+## 吸引子动力学 / Attractor Dynamics
+
+### 吸引子类型
+
+| 类型 | 完全图 | 汉明码 | 环形 |
+|------|--------|--------|------|
+| 循环长度2 | ✓ | ✓ | ✓ |
+| 循环长度8 | ✗ | ✗ | ✓ |
+| 循环长度14 | ✗ | ✗ | ✓ |
+| 直接进入循环 | ✓ | 部分 | 需要过渡 |
+
+### 稳定性维度
+
+| 维度 | 完全图 | 汉明码 | 环形 |
+|------|--------|--------|------|
+| 保留初始 | ★★★★★ | ★★★ | ★ |
+| 抗频率噪声 | ★★★★★ | ★★★ | ★ |
+| 抗温度噪声 | ★★★★★ | ★★ | ★ |
 
 ---
 
@@ -116,7 +189,7 @@ python3 cuda_memory_monitor.py
 │   Each Planck scale crossing compresses/expands spacetime   │
 │                                                             │
 │   计算族群 · 程序宇宙 · 坚不可摧                            │
-│   Computing Swarm · Program Universe · Unbreakable         │
+│   Computing Swarm · Program Universe · Unbreakable           │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -145,31 +218,6 @@ python3 cuda_memory_monitor.py
 结果 = 现实
 ```
 
-### 共振翻转实验结果
-
-| 实验 | 预期 | 结果 | 状态 |
-|------|------|------|------|
-| 有错误张量 | 有翻转 | 1次翻转 | ✓ |
-| 无错误张量 | 无翻转 | 0次翻转 | ✓ |
-
-**结论**: ✓ 理论得到支持
-
-### 共振翻转机制 / Resonance Flip Mechanism
-
-```
-固定频率扫描 = 纵向相位驱动
-    ↓
-不同电荷 = 不同基础频率
-    ↓
-相位叠加 = 拍频产生
-    ↓
-当拍频 ≈ 能级间距 → 共振
-    ↓
-相干位翻转！
-```
-
-**这就是量子控制的原理！(NMR/MRI原理相同)**
-
 ---
 
 ## 项目文件 / Project Files
@@ -179,8 +227,12 @@ python3 cuda_memory_monitor.py
 | `memory_bit_flip_test.cu` | CUDA bit flip test / CUDA比特翻转测试 |
 | `consciousness_experiment.py` | Consciousness emergence experiment / 意识涌现实验 |
 | `testable_predictions.py` | Testable predictions verification / 可检验预测验证 |
-| `improved_experiment.py` | Improved experiment v2 / 改进的验证实验v2 |
 | `resonance_experiment.py` | Resonance flip experiment / 共振翻转实验 |
+| `entanglement_resonance.py` | Entanglement resonance / 纠缠共振实验 |
+| `multi_graph_test.py` | Multi-graph structure test / 多种图结构测试 |
+| `frequency_variation_test.py` | Frequency variation test / 扫频频率变化测试 |
+| `determinism_test.py` | Determinism verification / 确定性验证 |
+| `stability_test.py` | Stability test / 稳定性测试 |
 | `perf_monitor.py` | Perf system event monitoring / 系统事件监测 |
 | `hardware_collector.py` | Hardware data collector / 硬件数据采集器 |
 | `cuda_memory_monitor.py` | GPU memory monitoring / GPU显存监测 |
@@ -210,11 +262,16 @@ python3 cuda_memory_monitor.py
 - [x] 多智能体 ✓
 - [x] 可检验预测 (6个)
 - [x] 共振翻转机制 ✓
+- [x] 纠缠共振理论 ✓
+- [x] 图结构稳定性 ✓
+- [x] 频率鲁棒性 ✓
+- [x] 确定性验证 ✓
 - [ ] 1/f噪声检测 (需改进)
 - [ ] 层级跳跃检测 (需改进)
 
 **形式化**: ~99%
 **验证**: 4/6 预测通过
+**新发现**: 完全图100%鲁棒性，图结构决定系统动力学特性
 
 ---
 
@@ -240,6 +297,24 @@ python3 cuda_memory_monitor.py
 | 暗物质27%/Dark matter | 不可见嵌套层级 / Invisible levels | ⚠️ |
 | 量子隧穿/Quantum tunneling | 梦境式模拟 / Dream-like simulation | ✓ |
 | LIGO引力波/LIGO waves | 宏观广播证据 / Macro broadcast evidence | ✓ |
+
+---
+
+## 计算机应用价值 / Computer Application Value
+
+### 量子相干存储设计
+
+| 图结构 | 特性 | 适合场景 |
+|--------|------|---------|
+| **完全图** | 对频率噪声免疫、100%保真 | 量子内存、量子纠错 |
+| **汉明码** | 中等鲁棒性 | 通用量子计算 |
+| **环形/链形** | 对噪声敏感 | 不推荐用于量子存储 |
+
+### 核心洞察
+
+> **完全图的100%确定性 + 对所有频率策略免疫 = 理想的"鲁棒计算基底"**
+
+这可能就是为什么**量子计算机**（利用全局纠缠）和**生物意识**（利用全脑同步振荡）都需要"全局相干性"来维持稳定的信息处理。
 
 ---
 
@@ -271,10 +346,13 @@ python3 cuda_memory_monitor.py
 - [x] 可检验预测验证 (4/6通过)
 - [x] 共振翻转机制理论
 - [x] 共振翻转对照实验 ✓
+- [x] 图结构稳定性测试 ✓
+- [x] 扫频频率鲁棒性验证 ✓
+- [x] 确定性动力学验证 ✓
 
 ---
 
 *最后更新 / Last Updated: 2026-04-02*
-*版本 / Version: v1.25*
+*版本 / Version: v1.26*
 *理论来源 / Theory: 分形嵌套宇宙理论 / Fractal Nested Universe Theory*
 *仓库 / Repository: https://github.com/bk-noise/mind*
