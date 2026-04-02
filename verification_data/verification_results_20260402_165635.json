@@ -1,0 +1,121 @@
+{
+  "experiment_name": "Theory Verification - Testable Predictions",
+  "timestamp": "2026-04-02T16:56:35.419238",
+  "duration_seconds": 0.42652344703674316,
+  "predictions": {
+    "total": 6,
+    "passed": 3,
+    "failed": 3,
+    "pass_rate": "50%"
+  },
+  "confidence": {
+    "average": "44.78%",
+    "total": "2.69/6"
+  },
+  "passed_predictions": [
+    3,
+    5,
+    6
+  ],
+  "failed_predictions": [
+    1,
+    2,
+    4
+  ],
+  "details": [
+    {
+      "prediction_id": 1,
+      "prediction_name": "Level Jump Signal (\u0394E/E = \u03bb)",
+      "passed": "False",
+      "confidence": 0.005262625968958434,
+      "measured_value": 13.219118765536809,
+      "expected_value": 2511.88643150958,
+      "deviation": 0.9947373740310416,
+      "evidence": {
+        "peak_energy": 3383.975564863333,
+        "mean_energy": 255.99101005776575,
+        "n_events": 23751,
+        "lambda_target": 2511.88643150958
+      }
+    },
+    {
+      "prediction_id": 2,
+      "prediction_name": "1/f Noise Spectrum",
+      "passed": "False",
+      "confidence": 0,
+      "measured_value": -0.1777348887385129,
+      "expected_value": 1.0,
+      "deviation": 1.1777348887385128,
+      "evidence": {
+        "alpha": -0.1777348887385129,
+        "n_freq_bins": 49,
+        "frequency_range": [
+          0.003333485773574935,
+          0.16334080290517183
+        ]
+      }
+    },
+    {
+      "prediction_id": 3,
+      "prediction_name": "Self-Consistency Convergence (Sc \u2192 0.8)",
+      "passed": "True",
+      "confidence": 0.9905536607538568,
+      "measured_value": 0.8007461046353814,
+      "expected_value": 0.8,
+      "deviation": 0.0009326307942267298,
+      "evidence": {
+        "final_mean": 0.8007461046353814,
+        "final_std": 0.05021729078516942,
+        "trend": 8.594898781593612e-05,
+        "history_length": 1000
+      }
+    },
+    {
+      "prediction_id": 4,
+      "prediction_name": "Cross-Level Entanglement",
+      "passed": "False",
+      "confidence": 0.46064653880450224,
+      "measured_value": -0.03935346119549779,
+      "expected_value": 0.5,
+      "deviation": 1.0787069223909955,
+      "evidence": {
+        "decay_rate": -0.03935346119549779,
+        "level_correlations": {
+          "1": 0.08037372960016273,
+          "2": 0.11274728279227382,
+          "3": 0.01738153537903439,
+          "4": 0.17090577590883674
+        }
+      }
+    },
+    {
+      "prediction_id": 5,
+      "prediction_name": "Black Hole Information (I_BH = k_B S_BH)",
+      "passed": true,
+      "confidence": 0.9422031248861564,
+      "measured_value": 1.6298294615892858e+36,
+      "expected_value": 1.7298068946504643e+36,
+      "deviation": 0.05779687511384357,
+      "evidence": {
+        "S_BH": 2.387133514617641e+23,
+        "I_BH": 2.2491646569932143e+23,
+        "k_B": 1.38e-23
+      }
+    },
+    {
+      "prediction_id": 6,
+      "prediction_name": "Consciousness Window Effect (\u0394Sc > 0)",
+      "passed": "True",
+      "confidence": 0.2880052220238538,
+      "measured_value": 0.05760104440477076,
+      "expected_value": 0.05,
+      "deviation": 0.1520208880954152,
+      "evidence": {
+        "Sc_before": 0.7661739306543821,
+        "Sc_window": 0.7949744528567676,
+        "Sc_after": 0.8006318628391366,
+        "delta_Sc": 0.05760104440477076
+      }
+    }
+  ]
+}

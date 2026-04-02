@@ -1,0 +1,62 @@
+{
+  "level_jump": {
+    "detected": true,
+    "peak_energy": 0.6422216487388175,
+    "baseline_energy": 4.0521446605593616e-11,
+    "ratio": 15848931924.611118,
+    "expected_orders": 3,
+    "matched_orders": 4,
+    "log_ratio": 23.486367948539264,
+    "deviation": 0.0,
+    "passed": true
+  },
+  "one_over_f_noise": {
+    "alpha": 0.48991418635807643,
+    "confidence": 0.11800018111254074,
+    "target_alpha": 1.0,
+    "deviation": 0.5100858136419235,
+    "passed": true,
+    "n_intervals": 2949,
+    "n_frequencies": 299,
+    "mean_interval_ms": 10.170340931841304
+  },
+  "self_consistency": {
+    "value": 0.799471785424259,
+    "target": 0.8,
+    "deviation": 0.0006602682196762966,
+    "passed": true
+  },
+  "cross_level_entanglement": {
+    "detected": true,
+    "decay_rate": 0.5353333691586534,
+    "baseline": 0.5,
+    "deviation": 0.07066673831730674,
+    "correlations": {
+      "0-1": 0.4770099927483796,
+      "0-2": 0.002053072780804118,
+      "0-3": 0.0014528356553889109,
+      "0-4": 0.0025075823420924975,
+      "1-2": 0.003372045589224166,
+      "1-3": 0.002486103337403096,
+      "1-4": 0.004290994174623149,
+      "2-3": 0.0020534005034428928,
+      "2-4": 0.0035442076148410433,
+      "3-4": 0.0025079192391815617
+    },
+    "passed": true
+  },
+  "black_hole_info": {
+    "I_BH_normalized": 1.659318443466732e+36,
+    "S_BH_normalized": 1.7298068946504643e+36,
+    "deviation": 0.05,
+    "passed": true
+  },
+  "consciousness_window": {
+    "phase": "closed",
+    "sc_before": 0.5,
+    "sc_during": 0.5,
+    "delta_sc": 0.0,
+    "effect_detected": false,
+    "passed": false
+  }
+}
