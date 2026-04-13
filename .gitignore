@@ -17,3 +17,6 @@ build/
 *.swo
 *~
 .DS_Store
+resonance_data/
+verification_data/
+.vscode/
